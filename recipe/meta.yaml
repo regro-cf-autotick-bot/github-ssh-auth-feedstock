@@ -1,13 +1,13 @@
 {% set name = "github-ssh-auth" %}
-{% set version = "0.9.1" %}
+{% set version = "1.0.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: 57269a316e168822f9dd0856d85a3242192eefb06a3087a00b1a79dd7e019516
+  - url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+    sha256: 418a453b48c4e7933420a3f659435e1e71074be28d60955ebde4c450b42a7c5f
   - url: https://raw.githubusercontent.com/oorabona/github-ssh-auth/master/LICENSE
     sha256: 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
@@ -16,9 +16,9 @@ build:
   number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
   entry_points:
-      - github-ssh = github_ssh_auth.cli:cli
-      - github-ssh-update = github_ssh_auth.cli:update
-      - github-ssh-auth = github_ssh_auth.cli:auth
+    - github-ssh = github_ssh_auth.cli:cli
+    - github-ssh-update = github_ssh_auth.cli:update
+    - github-ssh-auth = github_ssh_auth.cli:auth
 
 requirements:
   host:
@@ -46,8 +46,8 @@ about:
   summary: Use your GitHub organization user's keys as a SSH authentication method.
 
   description: |
-      This project aims to provide a way for SSHd to authenticate users on shell boxes 
-      using GitHub API v3 SSH keys of users in your organization.
+    This project aims to provide a way for SSHd to authenticate users on shell boxes 
+    using GitHub API v3 SSH keys of users in your organization.
   dev_url: https://github.com/oorabona/github-ssh-auth
 
 extra:
